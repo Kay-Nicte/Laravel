@@ -8,6 +8,12 @@ use App\Models\Planet;
 class PlanetController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('is_admin');
+    }
+    
     public function index()
     {
         $user = auth()->user();
